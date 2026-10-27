@@ -1,0 +1,23 @@
+experiment_name: baseline_mobilenetv3
+seed: 42
+
+data:
+  train_dir: data/train
+  val_dir: data/val
+  image_size: 224
+  batch_size: 32
+  num_workers: 2
+
+model:
+  architecture: mobilenet_v3_small
+  pretrained: true
+  dropout: 0.2
+
+training:
+  epochs: 10
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  device: auto
+  augment: false
+
+output_dir: models/baseline

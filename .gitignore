@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.streamlit/secrets.toml
+
+# Large/generated artifacts
+data/raw/
+data/processed/
+models/
+outputs/
+!data/README.md
+!models/.gitkeep
+!outputs/.gitkeep

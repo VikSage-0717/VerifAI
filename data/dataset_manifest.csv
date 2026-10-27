@@ -1,0 +1,7 @@
+split,class,source,generator,image_count,license,notes
+train,fake,,,,,
+train,real,,,,,
+val,fake,,,,,
+val,real,,,,,
+test_seen,fake,,,,,
+test_seen,real,,,,,
