@@ -34,3 +34,8 @@ def build_loader(directory: str | Path, batch_size: int, image_size: int, worker
         num_workers=workers,
         pin_memory=True,
     ), dataset.classes
+
+
+def are_binary_real_fake_classes(classes: list[str]) -> bool:
+    """Accept either `fake`/`real` or CIFAKE's uppercase folder names."""
+    return [item.lower() for item in classes] == ["fake", "real"]

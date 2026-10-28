@@ -5,3 +5,7 @@ val,fake,,,,,
 val,real,,,,,
 test_seen,fake,,,,,
 test_seen,real,,,,,
+cifake_train,FAKE,CIFAKE,latent diffusion,50000,See CIFAKE terms,Original dataset split
+cifake_train,REAL,CIFAR-10,not applicable,50000,See CIFAR-10 terms,Original dataset split
+cifake_test,FAKE,CIFAKE,latent diffusion,10000,See CIFAKE terms,Original dataset split
+cifake_test,REAL,CIFAR-10,not applicable,10000,See CIFAR-10 terms,Original dataset split

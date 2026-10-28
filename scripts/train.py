@@ -13,7 +13,7 @@ from tqdm import tqdm
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from ai_image_detector.config import load_config
-from ai_image_detector.data import build_loader
+from ai_image_detector.data import are_binary_real_fake_classes, build_loader
 from ai_image_detector.model import create_model
 
 
@@ -46,8 +46,8 @@ def main():
     device = choose_device(train_cfg["device"])
     train_loader, classes = build_loader(data_cfg["train_dir"], data_cfg["batch_size"], data_cfg["image_size"], data_cfg["num_workers"], True, train_cfg["augment"])
     val_loader, val_classes = build_loader(data_cfg["val_dir"], data_cfg["batch_size"], data_cfg["image_size"], data_cfg["num_workers"])
-    if classes != ["fake", "real"] or val_classes != classes:
-        raise ValueError("Each split must contain class folders named fake and real.")
+    if not are_binary_real_fake_classes(classes) or val_classes != classes:
+        raise ValueError("Each split must contain matching fake/real class folders (case-insensitive).")
 
     model = create_model(**model_cfg).to(device)
     criterion = nn.CrossEntropyLoss()
