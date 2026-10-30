@@ -17,8 +17,19 @@ from ai_image_detector.data import are_binary_real_fake_classes, build_loader
 from ai_image_detector.model import create_model
 
 
+
+
 def choose_device(value: str) -> torch.device:
-    return torch.device("cuda" if value == "auto" and torch.cuda.is_available() else "cpu" if value == "auto" else value)
+    if value != "auto":
+        return torch.device(value)
+
+    if torch.cuda.is_available():
+        return torch.device("cuda")
+
+    if torch.backends.mps.is_available():
+        return torch.device("mps")
+
+    return torch.device("cpu")
 
 
 @torch.no_grad()
